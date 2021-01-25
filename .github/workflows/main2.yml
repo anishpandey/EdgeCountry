@@ -24,14 +24,32 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: Deploy Akamai Edgeworkers
+      - name: Deploy Akamai Edgeworkers Staging
         uses: jdmevo123/akamai-edgeworker-action@1.1
         env:
-          EDGERC: ${{ secrets.AKAMAI_EDGERC}}
+          EDGERC: ${{  secrets.AKAMAI_EDGERC }}
         with:
           edgeworkersName: ${{ github.event.repository.name }}
-          network: 'production'
-          groupid: 89177
+          network: 'staging' 
+          groupid: 89177   
+          
+      - name: Deploy Akamai Edgeworkers Prod
+        uses: jdmevo123/akamai-edgeworker-action@1.1
+        env:
+          EDGERC: ${{  secrets.AKAMAI_EDGERC }}
+        with:
+          edgeworkersName: ${{ github.event.repository.name }}
+          network: 'production' 
+          groupid: 89177  
+        
+        
+ 
+ 
+            
+            
+        
+        
+
        
       
        
